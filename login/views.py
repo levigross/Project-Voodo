@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.views.generic import *
+from django.views.generic import CreateView
 from django.http import HttpResponseRedirect
 
 class Login(CreateView):
