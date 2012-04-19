@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 
 class Signup(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
@@ -10,6 +11,7 @@ class Signup(models.Model):
 
     def __unicode__(self):
     	return self.name
+
 
 
 
