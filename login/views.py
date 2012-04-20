@@ -1,10 +1,15 @@
 from django.contrib.auth import authenticate, login
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.http import HttpResponseRedirect
+
+
+
+class home(Templateview):
+	 template_name = 'home'
 
 class Login(CreateView):
 	form_class = LoginForm
-	template_name = ""
+	template_name = "login.html"
 	success_url = ""
 	
 	def login-validation(self,form)
