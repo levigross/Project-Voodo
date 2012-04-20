@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     )
 
-ROOT_URLCONF = 'signup.urls'
+ROOT_URLCONF = 'Project-Voodo.urls'
 
 TEMPLATE_DIRS = (
     u"%s/templates/" % os.getcwdu(),
