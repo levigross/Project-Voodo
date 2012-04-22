@@ -1,4 +1,6 @@
 from django.db import models
+from django.template.defaultfilters import slugify
+
 
 __all__ = ['Project', 'Tag', 'Video', 'Image', 'Category']
 
@@ -6,7 +8,7 @@ class UserContent(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
     updated_on = models.DateTimeField(auto_now_add=True)
     is_public = models.BooleanField(default=False)
-    public_id = models.CharField(max_length=40, required=True)
+    public_id = models.CharField(max_length=11, unique=True)
 
     class Meta:
         abstract = True
@@ -21,9 +23,15 @@ class Project(UserContent):
     video = models.ManyToManyField('Video', related_name="videos", blank=True, null=True)
     image = models.ManyToManyField('Image', related_name="images", blank=True, null=True)
     category = models.ForeignKey('Category', unique=True, related_name="category", blank=True, null=True)
+    slug = models.SlugField(required=False, max_length=100)
 
     def __unicode__(self):
         return self.title
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        if self.slug is None:
+            self.slug = slugify(self.title)
+        super(Project, self).save(force_insert, force_update, using)
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50)

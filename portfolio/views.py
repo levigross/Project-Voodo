@@ -11,7 +11,8 @@ class ViewPortfolio(TemplateView):
         template_name = 'portfolio/portfolio_view.html'
 
         return {
-            'portfolio': get_object_or_404(Project.objects.get(public_id=kwargs.get('public_id'))),
+            'portfolio': get_object_or_404(Project.objects.get(public_id=kwargs.get('public_id'),
+                slug=kwargs.get('slug'))),
             }
 
 
