@@ -2,11 +2,12 @@ from django.shortcuts import render_to_response, redirect
 from forms import SignupForm
 from django.template import RequestContext
 from django.views.generic import CreateView, TemplateView
+from models import Signup
 
-class home(TemplateView):
+class HomeView(TemplateView):
 	template_name = "home.html"
 
-class signup(CreateView):
+class SiteSignup(CreateView):
 	template_name= "signup.html"
 	form_class = SignupForm
 	success_url = ""

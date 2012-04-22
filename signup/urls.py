@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, url
+from signup.views import SiteSignup
 
 urlpatterns = patterns('',
-    url(r'^$', 'signup.views.signup', name='site_signup'),
+    url(r'^$', SiteSignup.as_view(), name='site_signup'),
 )
