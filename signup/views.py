@@ -7,21 +7,20 @@ class home(TemplateView):
 	template_name = "home.html"
 
 class signup(CreateView):
-	template_name: "signup.html"
-	model = Signup
+	template_name= "signup.html"
 	form_class = SignupForm
 	success_url = ""
 
 	def form_valid(request):
-    	if request.method == 'POST':
-       	 	form = SignupForm(request.POST)
-        	if form.is_valid():
-            	form.save()
-            	messages.add_message(request, messages.INFO, "Thank you for signing up to Voodoo")
-            	return redirect('')
-   		 else:
-    	    form = SignupForm()
-    	return render_to_response('signup/signup.html', {'form': form}, context_instance=RequestContext(request))
+		if request.method == 'POST':
+			form = SignupForm(request.POST)
+			if form.is_valid():
+				form.save()
+				messages.add_message(request, messages.INFO, "Thank you for signing up to Voodoo")
+				return redirect('')
+		else:
+			form = SignupForm()
+		return render_to_response('signup/signup.html', {'form': form}, context_instance=RequestContext(request))
 
 	def form_invalid(self, form):
 		return self.render_to_response(self.get_context_data(form=form))
