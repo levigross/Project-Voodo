@@ -8,7 +8,7 @@ class HomeView(TemplateView):
 	template_name = "home.html"
 
 class SiteSignup(CreateView):
-	template_name= "signup.html"
+	template_name= "signup/signup.html"
 	form_class = SignupForm
 	success_url = ""
 
@@ -21,13 +21,13 @@ class SiteSignup(CreateView):
 				return redirect('')
 		else:
 			form = SignupForm()
-		return render_to_response('signup/signup.html', {'form': form}, context_instance=RequestContext(request))
+		return render_to_response('signup.html', {'form': form}, context_instance=RequestContext(request))
 
 	def form_invalid(self, form):
 		return self.render_to_response(self.get_context_data(form=form))
 		
 	def get_context_data(self, **kwargs):
-		context = super(signup, self).get_context_data(**kwargs)
+		context = super(SiteSignup, self).get_context_data(**kwargs)
 		if self.request.POST:
 			context['SignupForm'] = SignupForm(self.request.POST)
 		else:

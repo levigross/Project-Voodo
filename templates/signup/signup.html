@@ -1,6 +1,8 @@
-{% extends "templates/signup.html" %}
+
+{% extends "home.html" %}
+
 {% block body %}
-    <form action="{% url site_signup %}" method="post">
+    <form action="{% url site-signup %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit" />
