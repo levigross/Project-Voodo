@@ -9,7 +9,7 @@ class home(Templateview):
 
 class Login(CreateView):
 	form_class = LoginForm
-	template_name = "login.html"
+	template_name = 'login.html'
 	success_url = ""
 	
 	def login-validation(self,form)
