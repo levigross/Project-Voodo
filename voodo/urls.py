@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url('^$', HomePage.as_view(), name="home_page"),
     url('^contact/$', Contact.as_view(), name="contact_page"),
     url('^about/$', About.as_view(), name="about_page"),
+    url('^portfolio/$', include('portfolio.urls')),
 )
