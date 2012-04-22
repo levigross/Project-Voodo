@@ -21,7 +21,7 @@ class signup(CreateView):
             	return redirect('')
    		 else:
     	    form = SignupForm()
-    	return render_to_response('templates/signup/signup.html', {'form': form}, context_instance=RequestContext(request))
+    	return render_to_response('signup/signup.html', {'form': form}, context_instance=RequestContext(request))
 
 	def form_invalid(self, form):
 		return self.render_to_response(self.get_context_data(form=form))
