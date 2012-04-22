@@ -1,5 +1,9 @@
+import datetime
+from hashlib import sha1
+
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.conf import settings
 
 
 __all__ = ['Project', 'Tag', 'Video', 'Image', 'Category']
@@ -12,6 +16,7 @@ class UserContent(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Project(UserContent):
     created_by = models.ForeignKey('account.User', unique=True, related_name="projects")
@@ -31,14 +36,19 @@ class Project(UserContent):
     def save(self, force_insert=False, force_update=False, using=None):
         if self.slug is None:
             self.slug = slugify(self.title)
+        if self.public_id is None:
+            self.public_id = sha1(settings.SECRET_KEY + self.created_by.email + self.title +
+                                  datetime.datetime.utcnow()).hexdigest()[:11]
         super(Project, self).save(force_insert, force_update, using)
+
 
 class Tag(models.Model):
     tag = models.CharField(max_length=50)
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __unicode__(self):
-        return self.tag	
+        return self.tag
+
 
 class Video(UserContent):
     owned_by = models.ForeignKey('account.User', unique=True, related_name="videos")
@@ -48,6 +58,7 @@ class Video(UserContent):
     def __unicode__(self):
         return self.video
 
+
 class Image(UserContent):
     owned_by = models.ForeignKey('account.User', unique=True, related_name="images")
     image = models.FileField(upload_to='images/')
@@ -55,6 +66,7 @@ class Image(UserContent):
 
     def __unicode__(self):
         return self.image
+
 
 class Category(models.Model):
     category = models.CharField(max_length=100, unique=True)
