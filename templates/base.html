@@ -3,48 +3,89 @@
 	{% block head %}
     <title>{% block title %}{% endblock %}</title>
 	<!--STYLESHEETS-->
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css" type="text/css" media="screen" />
+	
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen" />
 	<!--JS-->
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
-	<script type="text/javascript">
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
+	
+	<script language="JavaScript" type="text/javascript">
 		$('.dropdown-toggle').dropdown()
 	</script>
+	
 	{% endblock %}
+	
 </head>
 <body>
-	<header id="header">
-		<div id="logo">Project Voodoo</div>
-		<div id="login"></div>
+	<header class="top">
+		<div class="navbar container">
+		  <div class="navbar-inner">
+		    <div class="container">
+				<a class="brand" href="#">
+				  Project Voodoo
+				</a>
+		      	<ul class="nav">
+				  <li class="active">
+				    <a href="#">Home</a>
+				  </li>
+				  <li><a href="#">About Us</a></li>
+				  <li><a href="#">Contact Us</a></li>
+				</ul>
+				<form class="navbar-search pull-right">
+				  <input type="text" class="search-query" placeholder="Search">
+				</form>
+		    </div>
+		  </div>
+		</div>
 	</header>
-	<section id="navbar">
-		<nav id="mainNav">
-			{% block nav %}
-			<ul class="nav nav-pills">
-			  <li class="active"><a href="#">Regular link</a></li>
-			  <li class="dropdown" id="menu1">
-			    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
-			      Dropdown
-			      <b class="caret"></b>
-			    </a>
-			    <ul class="dropdown-menu">
-			      <li><a href="#">Action</a></li>
-			      <li><a href="#">Another action</a></li>
-			      <li><a href="#">Something else here</a></li>
-			      <li class="divider"></li>
-			      <li><a href="#">Separated link</a></li>
-			    </ul>
-			  </li>
-			  ...
-			</ul>
-			{% endblock %}
-		</nav>
-		<div id="filters"></div>
-	</section>
-	<footer id="bottom">
+	{% block action %}
+	<div class="hero-unit"></div>
+	{% endblock %}
+	<div class="filter-bar container">
+		<div class="rightside">
+			<form class="form-inline">
+			  <input type="text" class="input-small" placeholder="Email">
+			  <input type="password" class="input-small" placeholder="Password">
+			  <button type="submit" class="btn">Sign in</button>
+			  <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Sign-up</a>
+			</form>
+			<!-- <label class="checkbox">
+					    <input type="checkbox"> Remember me
+					  </label> -->
+			<div id="myModal" class="modal hide fade">
+			  <div class="modal-header">
+			    <a class="close" data-dismiss="modal">×</a>
+			    <h3>Modal header</h3>
+			  </div>
+			  <div class="modal-body">
+			    <form class="form-horizontal">
+				  <fieldset>
+				    <legend>Legend text</legend>
+				    <div class="control-group">
+				      <label class="control-label" for="input01">Text input</label>
+				      <div class="controls">
+				        <input type="text" class="input-xlarge" id="input01">
+				        <p class="help-block">Supporting help text</p>
+				      </div>
+				    </div>
+				  </fieldset>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+			    <a href="#" class="btn" data-dismiss="modal" >Close</a>
+			    <a href="#" class="btn btn-primary">Register</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+	{% block port-wall %}
+	
+	{% endblock %}
+	<footer class="bottom">
 		
 	</footer>
+	
 </body>
 </html>
