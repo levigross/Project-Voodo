@@ -1,9 +1,9 @@
-{% extends "templates/login.html" %}
+{% extends "home.html" %}
 
 {% block title %}{{ title|capfirst }} Contact yipee! {% endblock %}
 
 {% block body %}
-    <form enctype="multipart/form-data" action="{% url login_page %}" method="post">
+    <form enctype="multipart/form-data" action="{% url site-login %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
 
