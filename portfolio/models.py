@@ -1,9 +1,12 @@
 from django.db import models
 
+__all__ = ['Project', 'Tag', 'Video', 'Image', 'Category']
+
 class UserContent(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
     updated_on = models.DateTimeField(auto_now_add=True)
     is_public = models.BooleanField(default=False)
+    public_id = models.CharField(max_length=40, required=True)
 
     class Meta:
         abstract = True
