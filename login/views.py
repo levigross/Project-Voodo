@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 class home(Templateview):
 	 template_name = 'home'
 
-class Login(CreateView):
+class siteLogin(CreateView):
 	form_class = LoginForm
 	template_name = 'login.html'
 	success_url = ""
