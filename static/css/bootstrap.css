@@ -571,7 +571,7 @@ pre code {
   overflow-y: scroll;
 }
 form {
-  margin: 0 0 18px;
+  margin: 0 0 0; /*Changed to 0*/
 }
 fieldset {
   padding: 0;

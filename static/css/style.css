@@ -37,18 +37,20 @@
 
 .navbar-search input {
  width: 100px;
+ background:#f0f0f0!important;
  -moz-transition: width 0.35s ease-out;
  -webkit-transition: width 0.35s ease-out;
  transition: width 0.35s ease-out;
 }
 .navbar-search input:focus {
- width: 250px;
+ width: 200px;
  -moz-transition: width 0.35s ease-out;
  -webkit-transition: width 0.35s ease-out;
  transition: width 0.35s ease-out;
 }
 .rightside{
 	float: right;
-	padding-right: 20px;
 }
+.input-small{
+	margin-top: 5px;
 }
