@@ -24,7 +24,7 @@ class SiteLogin(TemplateView):
 		form = LoginForm(request.POST)
 		if form.is_valid():
 			messages.add_message(self.request, messages.INFO, message="You have succesfully logged in")
-			return redirect('')
+			return redirect('home')
 		else:
 			return self.get(request, form=LoginForm)
 
