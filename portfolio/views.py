@@ -32,4 +32,17 @@ class CreateProject(CreateView):
 
 
 class UpdateProject(UpdateView):
-    pass
+    form_class = UserForm
+    model = User
+    template_name = 'portfolio/user_update.html'
+	
+    def get_object(self, queryset=None):
+        obj = User.objects.get(username=self.request.user)
+        return obj
+	
+    def form_valid(self, form):
+	self.object = form.save(commit=False)
+	self.object.user = self.request.user
+	self.object.save()
+	return HttpResponseRedirect(self.get_success_url())
+
