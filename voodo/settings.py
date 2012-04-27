@@ -118,6 +118,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'signup',
+    'login',
+
 )
 
 # A sample logging configuration. The only tangible logging

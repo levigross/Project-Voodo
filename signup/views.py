@@ -3,6 +3,8 @@ from forms import SignupForm
 from django.template import RequestContext
 from django.views.generic import CreateView, TemplateView
 from models import Signup
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 class HomeView(TemplateView):
 	template_name = "home.html"
@@ -11,21 +13,19 @@ class SiteSignup(CreateView):
 	template_name= "signup/signup.html"
 	form_class = SignupForm
 	success_url = ""
+	
 
-	def form_valid(request):
-		if request.method == 'POST':
-			form = SignupForm(request.POST)
-			if form.is_valid():
-				form.save()
-				messages.add_message(request, messages.INFO, "Thank you for signing up to Voodoo")
-				return redirect('')
+	def post(self, request, *args, **kwargs):
+		form=SignupForm(self.request.POST)
+		if form.is_valid():
+			form.save()
+			messages.add_message(request, messages.INFO, "Thank you for signing up to Voodoo")
+			return redirect('home')
 		else:
-			form = SignupForm()
-		return render_to_response('signup.html', {'form': form}, context_instance=RequestContext(request))
+			return self.render_to_response(self.get_context_data(form=form))
+		messages.add_message(self.request, messages.INFO, message="Please eneter a valid information.")
 
-	def form_invalid(self, form):
-		return self.render_to_response(self.get_context_data(form=form))
-		
+
 	def get_context_data(self, **kwargs):
 		context = super(SiteSignup, self).get_context_data(**kwargs)
 		if self.request.POST:
@@ -33,3 +33,7 @@ class SiteSignup(CreateView):
 		else:
 			context['SignupForm'] = SignupForm()
 		return context
+
+
+
+
