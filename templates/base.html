@@ -10,10 +10,12 @@
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
 	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/login.js"></script>
 	
 	<script language="JavaScript" type="text/javascript">
 		$('.dropdown-toggle').dropdown()
 	</script>
+	
 	
 	{% endblock %}
 	
@@ -33,39 +35,45 @@
 					  <li><a href="#">About Us</a></li>
 					  <li><a href="#">Contact Us</a></li>
 					</ul>
-					<div class="rightside">
-						<form class="form-inline">
-						  <input type="text" class="input-small" placeholder="Email">
-						  <input type="password" class="input-small" placeholder="Password">
-						  <button type="submit" class="btn">Sign in</button>
-						  <a class="btn btn-primary" data-toggle="modal" href="#myModal" >Sign-up</a>
-						</form>
-						<!-- <label class="checkbox">
-								    <input type="checkbox"> Remember me
-								  </label> -->
-						<div id="myModal" class="modal hide fade">
+					<ul class="nav pull-right">
+						<li class="divider-vertical"></li>
+						<li><a data-toggle="modal" href="#signup">Sign-up</a></li>
+						<li><a data-toggle="modal" href="#signin">Sign-in</a></li>
+					</ul>
+					<div id="signin" class="modal hide fade">
 						  <div class="modal-header">
 						    <a class="close" data-dismiss="modal">×</a>
-						    <h3>Modal header</h3>
+						    <h3>Welcome Back!</h3>
 						  </div>
 						  <div class="modal-body">
-						    <form class="form-horizontal">
-							  <fieldset>
-							    <legend>Legend text</legend>
-							    <div class="control-group">
-							      <label class="control-label" for="input01">Text input</label>
-							      <div class="controls">
-							        <input type="text" class="input-xlarge" id="input01">
-							        <p class="help-block">Supporting help text</p>
-							      </div>
-							    </div>
-							  </fieldset>
-							</form>
+						  	<div class="span3">
+						      <label>Username</label>
+							  <input type="text" class="span3" placeholder="Type something…">
+							  <label>Password</label>
+							  <input type="text" class="span3" placeholder="Type something…">
+							  
+							  <label class="checkbox">
+							    <input type="checkbox"> Remember Me
+							  </label>
+							 </div>
+							 <div class="span3">
+							 	<h4>Not a Member Yet?</h4>
+							 	<a id="newuser"><button type="submit" class="btn btn-primary">Sign-up</button></a>
+							 </div>
 						  </div>
-						  <div class="modal-footer">
-						    <a href="#" class="btn" data-dismiss="modal" >Close</a>
-						    <a href="#" class="btn btn-primary">Register</a>
+
+						  <div class="modal-footer dark">
+						    <button type="submit" class="btn btn-primary">Sign-in</button>
 						  </div>
+					</div>
+					<div id="signup" class="modal hide fade">
+						<div class="modal-header">
+						    <a class="close" data-dismiss="modal">×</a>
+						    <h3>Welcome!</h3>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
 						</div>
 					</div>
 			    </div>
@@ -84,6 +92,12 @@
 	<footer class="bottom">
 		
 	</footer>
-	
+<script language="JavaScript" type="text/javascript">
+		
+			$('#newuser').on('click', function () {
+				$('#signin').modal('hide');
+				$('#signup').modal('show');
+			})
+</script>
 </body>
 </html>
