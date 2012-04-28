@@ -1,5 +1,8 @@
 /*STYLE SHEETS*/
 
+body{
+	background:#fff;
+}
 .top{
 	  width: 100%;
 	  background-color: #2c2c2c;
@@ -30,10 +33,18 @@
 	background-image: linear-gradient(top, #333333, #222222);
 	background-repeat: repeat-x;
 	height: 40px;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 }
-
+.am-wrapper{
+    float:left;
+    position:relative;
+    overflow:hidden;
+}
+.am-wrapper img{
+    position:absolute;
+    outline:none;
+}
 
 .navbar-search input {
  width: 100px;
@@ -54,7 +65,37 @@
 .input-small{
 	margin-top: 5px;
 }
+.port-wall{
+	margin-bottom: 43px;
+}
+.filter-bar{
+	background:#f5f5f5;
+	height: 40px;
+}
 
-.modal-footer {
-	
+.thumb{border: 1px solid #fefefe; }
+
+a: .thumb{ cursor: hand;}
+a:hover .thumb{opacity:.8; }
+
+
+.am-container a img:hover{
+	opacity: .9;
+}
+
+.loadmore{
+	display:none;
+	width:700px;
+	line-height:30px;
+	text-transform:uppercase;
+	background:#333;
+	float:right;
+	font-weight:bold;
+	font-size:16px;
+	text-align:center;
+	cursor:pointer;
+	text-shadow:1px 1px 1px #000;
+}
+.loadmore:hover{
+	background:#000;
 }
