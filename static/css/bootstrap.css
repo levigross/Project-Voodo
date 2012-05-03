@@ -2857,7 +2857,7 @@ input[type="submit"].btn.btn-mini {
   height: auto;
 }
 .navbar {
-  color: #999999;
+  /*color: #999999;*/ /*CHANGES MADE*/
 }
 .navbar .brand:hover {
   text-decoration: none;
