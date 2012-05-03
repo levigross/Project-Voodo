@@ -149,9 +149,9 @@ a:hover .thumb{opacity:.8; }
 }
 .tj_nav{
 	position:absolute;
-	right:-80px;
+	right:-40px;
 	top:50%;
-	margin-top:-85px;
+	margin-top:-45px;
 	height:70px;
 	width:39px;
 }
