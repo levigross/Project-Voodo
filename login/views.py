@@ -43,4 +43,8 @@ class SiteLogin(TemplateView):
 		else:
 			return self.render_to_response(self.get_context_data(form=form)) 
 			messages.add_message(self.request, messages.INFO, message="Please enter a valid username and password")
+
+
+
+			
 			
