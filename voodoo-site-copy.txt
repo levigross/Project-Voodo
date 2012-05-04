@@ -1,0 +1,14 @@
+Voodoo 
+Your portfolio, done. 
+
+Voodoo 
+The only secure, open source portfolio network.
+
+Voodoo 
+The only secure, open source portfolio network for the African diaspora.
+
+Conjure your own Voodoo. Fork it on github.
+
+Voodoo is an easy to use portfolio builder. Create and customize a beautiful portfolio worthy of your art or design. With a user-friendly interface, Voodoo gets you from there to here, stress-free. 
+
+Built with django, html5, and javascript, Voodoo is secure and completely open source. Fork the code on github.
