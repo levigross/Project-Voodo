@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head>
+	{% block head %}
+    <title>{% block title %}{% endblock %}</title>
+	<!--STYLESHEETS-->
+	
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" media="screen" />
+	<!--JS-->
+	
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+
+	<script language="Javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/login.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/jquery.montage.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/jquery.mousewheel.js"></script>
+	<script language="JavaScript" type="text/javascript" src="{{ STATIC_URL }}js/jquery.gridnav.js"></script>
+	<script type="text/javascript">
+			$(function() {
+				$('#tj_container').gridnav({
+					type	: {
+						mode		: 'seqfade', 	// use def | fade | seqfade | updown | sequpdown | showhide | disperse | rows
+						speed		: 500,			// for fade, seqfade, updown, sequpdown, showhide, disperse, rows
+						easing		: '',			// for fade, seqfade, updown, sequpdown, showhide, disperse, rows	
+						factor		: 100,			// for seqfade, sequpdown, rows
+						reverse		: ''			// for sequpdown
+					}
+				});
+			});
+		</script>
+	
+	
+	
+	{% endblock %}
+	
+</head>
+<body>
+	<div class="filter-bar">
+		<div class="container">
+			<div class="navbar-inner">
+			
+				<div class="rightside">
+					<form class="form-search">
+			  			<input type="text" class="input-medium search-query">
+			  			<button type="submit" class="btn">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<header class="top">
+		<div class="outContainer">
+			<div class="navMain">
+				<div class="logo"><a href="#"><img src="{{ STATIC_URL }}img/voodoo_logo.png" width="120"></a></div>
+				<ul class="nav">
+					<li class="active">
+					    <a href="#">Home</a>
+					</li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li class="divider-vertical"></li>
+					<li><a data-toggle="modal" href="#signup">Sign-up</a></li>
+					<li class="sign"><a data-toggle="modal" href="#signin">Sign-in</a></li>
+				</ul>
+				<div id="signin" class="modal hide fade">
+						  <div class="modal-header">
+						    <a class="close" data-dismiss="modal">×</a>
+						    <h3>Welcome Back!</h3>
+						  </div>
+						  <div class="modal-body">
+						  	<div class="span3">
+						      <label>Username</label>
+							  <input type="text" class="span3" placeholder="Type something…">
+							  <label>Password</label>
+							  <input type="text" class="span3" placeholder="Type something…">
+							  
+							  <label class="checkbox">
+							    <input type="checkbox"> Remember Me
+							  </label>
+							 </div>
+							 <div class="span3">
+							 	<h4>Not a Member Yet?</h4>
+							 	<a id="newuser"><button type="submit" class="btn btn-primary">Sign-up</button></a>
+							 </div>
+						  </div>
+
+						  <div class="modal-footer dark">
+						    <button type="submit" class="btn btn-primary">Sign-in</button>
+						  </div>
+				</div>
+				<div id="signup" class="modal hide fade">
+						<div class="modal-header">
+						    <a class="close" data-dismiss="modal">×</a>
+						    <h3>Welcome!</h3>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+						</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	{% block port-wall %}
+	
+	{% endblock %}
+	{% block mainContent %}
+	
+	{% endblock %}
+	<footer class="bottom">
+		
+	</footer>
+<script language="JavaScript" type="text/javascript">	
+	$('#newuser').on('click', function () {
+		$('#signin').modal('hide');
+		$('#signup').modal('show');
+	})
+</script>
+<script type="text/javascript">
+			$(function() {
+				/* 
+				 * just for this demo:
+				 */
+				$('#showcode').toggle(
+					function() {
+						$(this).addClass('up').removeClass('down').next().slideDown();
+					},
+					function() {
+						$(this).addClass('down').removeClass('up').next().slideUp();
+					}
+				);
+				$('#panel').toggle(
+					function() {
+						$(this).addClass('show').removeClass('hide');
+						$('#overlay').stop().animate( { left : - $('#overlay').width() + 20 + 'px' }, 300 );
+					},
+					function() {
+						$(this).addClass('hide').removeClass('show');
+						$('#overlay').stop().animate( { left : '0px' }, 300 );
+					}
+				);
+				
+				var $container 	= $('#am-container'),
+					$imgs		= $container.find('img').hide(),
+					totalImgs	= $imgs.length,
+					cnt			= 0;
+				
+				$imgs.each(function(i) {
+					var $img	= $(this);
+					$('<img/>').load(function() {
+						++cnt;
+						if( cnt === totalImgs ) {
+							$imgs.show();
+							$container.montage({
+								fillLastRow				: false,
+								alternateHeight			: false,
+								alternateHeightRange	: {
+									min	: 100,
+									max	: 300
+								}
+							});
+							
+							$('#overlay').fadeIn(500);
+						}
+					}).attr('src',$img.attr('src'));
+				});	
+				
+			});
+		</script>
+</body>
+</html>
